@@ -1,6 +1,7 @@
 package com.write.timecalendar;
 
 import java.io.IOException;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 /**
  * Организовать приложение календарь.
@@ -17,75 +18,52 @@ import java.util.Scanner;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
-    private static String key;
 
-    public static String getKey() {
-        return key;
-    }
 
     public static void main(String[] args) throws IOException {
-        //   MyList myList = new MyList();
-
+        CalendarMethods myCalendar = new CalendarMethods();
         while (true) {
-            //        myList.menu();
-            key = scanner.next();
+            myCalendar.menu();
+           String key = scanner.next();
             switch (key) {
                 case "1": {
-                    System.out.println("Input element that you want to add(Capacity)");
+                    System.out.println("-> Input timezone to know current time and date.");
                     int element = scanner.nextInt();
-                    //            myList.addIncreaseCapacityDouble(element);
+                    myCalendar.currentDateTimeDifferentTimezone();
                     break;
                 }
                 case "2": {
                     System.out.println("Input element that you want to add(One)");
                     int element = scanner.nextInt();
-                    //             myList.addIncreaseCapacityForOne(element);
+                    myCalendar.createEvent();
                     break;
                 }
                 case "3": {
                     System.out.println("Input index of element that you want to remove");
                     int index = scanner.nextInt();
-                    //                myList.remove(index);
+                    myCalendar.determineTimezone();
                     break;
                 }
                 case "4": {
                     System.out.println("Input index of element that you want to change");
                     int index = scanner.nextInt();
                     int element = scanner.nextInt();
-                    //              myList.changeElementOfArray(index, element);
+                    myCalendar.printDate();
                     break;
                 }
                 case "5": {
                     System.out.println("Input number that you want to increase array");
                     int number = scanner.nextInt();
-                    //                myList.increaseList(number);
+                    myCalendar.printDateOrTime();
                     break;
                 }
                 case "6": {
                     System.out.println("Input number of element that you want to cut");
                     int number = scanner.nextInt();
-                    //               myList.cutList(number);
+                    myCalendar.formatDate();
                     break;
                 }
-                case "7": {
-                    //                  myList.printList();
-                    break;
-                }
-                case "8": {
-                    //                 myList.sortList();
-                    break;
-                }
-                case "9": {
-                    System.out.println("Input index of element that you want to see");
-                    int index = scanner.nextInt();
-//                    System.out.println(myList.getElement(index));
-                    break;
-                }
-                case "10": {
-                    //                 myList.showLogList();
-                    break;
-                }
-                case "11":
+                case "7":
                     return;
                 default:
                     return;
