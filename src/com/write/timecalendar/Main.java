@@ -1,8 +1,10 @@
 package com.write.timecalendar;
 
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+
 /**
  * Организовать приложение календарь.
  * Приложение должно позволять:
@@ -24,12 +26,12 @@ public class Main {
         CalendarMethods myCalendar = new CalendarMethods();
         while (true) {
             myCalendar.menu();
-           String key = scanner.next();
+            String key = scanner.next();
             switch (key) {
                 case "1": {
                     System.out.println("-> Input timezone to know current time and date.");
                     int element = scanner.nextInt();
-                    myCalendar.currentDateTimeDifferentTimezone();
+                    // myCalendar.currentDateTimeDifferentTimezone();
                     break;
                 }
                 case "2": {
@@ -39,27 +41,27 @@ public class Main {
                     break;
                 }
                 case "3": {
-                    System.out.println("Input index of element that you want to remove");
-                    int index = scanner.nextInt();
-                    myCalendar.determineTimezone();
+                    System.out.println("Input part of world(like Europe, America or Africa)");
+                    String partOfWorld = scanner.next();
+                    System.out.println("Input city");
+                    String city = scanner.next();
+                    System.out.println(myCalendar.determineTimezone(partOfWorld, city));
                     break;
                 }
                 case "4": {
-                    System.out.println("Input index of element that you want to change");
-                    int index = scanner.nextInt();
-                    int element = scanner.nextInt();
-                    myCalendar.printDate();
+                    System.out.println("Input 1 for choose day,2 for choose week,3 for choose month,4 for choose year and count of it");
+                    int number = scanner.nextInt();
+                    int count = scanner.nextInt();
+                    myCalendar.printDate(number, count);
                     break;
                 }
                 case "5": {
-                    System.out.println("Input number that you want to increase array");
+                    System.out.println("Input 1 for choose Time,2 for choose Date ,3 for choose Date and Time,4 for choose Day of week,5 for choose Number of day in year,6 for choose count days to New Year");
                     int number = scanner.nextInt();
-                    myCalendar.printDateOrTime();
+                    myCalendar.printDateOrTime(number);
                     break;
                 }
                 case "6": {
-                    System.out.println("Input number of element that you want to cut");
-                    int number = scanner.nextInt();
                     myCalendar.formatDate();
                     break;
                 }
