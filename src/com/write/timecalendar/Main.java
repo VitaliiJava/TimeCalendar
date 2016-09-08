@@ -1,6 +1,7 @@
 package com.write.timecalendar;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.time.LocalTime;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -29,15 +30,14 @@ public class Main {
             String key = scanner.next();
             switch (key) {
                 case "1": {
-                    System.out.println("-> Input timezone to know current time and date.");
-                    int element = scanner.nextInt();
-                    // myCalendar.currentDateTimeDifferentTimezone();
+                    System.out.println("-> Input timezone/city like (Europa/Madrid) to know current time and date.");
+                    String timezone = scanner.next();
+                    String city = scanner.next();
+                    System.out.println(myCalendar.currentDateTimeDifferentTimezone(timezone, city));
                     break;
                 }
                 case "2": {
-                    System.out.println("Input element that you want to add(One)");
-                    int element = scanner.nextInt();
-                    myCalendar.createEvent();
+                    myCalendar.combineFunction();
                     break;
                 }
                 case "3": {
@@ -51,6 +51,7 @@ public class Main {
                 case "4": {
                     System.out.println("Input 1 for choose day,2 for choose week,3 for choose month,4 for choose year and count of it");
                     int number = scanner.nextInt();
+                    System.out.println("Input count of data");
                     int count = scanner.nextInt();
                     myCalendar.printDate(number, count);
                     break;
@@ -62,10 +63,22 @@ public class Main {
                     break;
                 }
                 case "6": {
-                    myCalendar.formatDate();
+                    System.out.println("Input your format of date");
+                    System.out.println("You can choose 1 of this formats\n\"dd MMMM yy hh:mm:ss\"\n\"dd/MM/yy\"\n\"HH:mm\"\nor dd/MM/yyyy, dd-MM-yyyy, MM/dd/yyyy, yyyy-MM-dd.\n\"yyyy.MM.dd G 'at' hh:mm:ss z\"\n\"EEE, MMM d, ''yy\"\n\"h:mm a\"\n\"hh 'o''''clock' a, zzzz\"\n\"K:mm a, z\"\n\"yyyyy.MMMMM.dd GGG hh:mm aaa\"\n");
+                    String dateFormat = scanner.next();
+                    System.out.println(myCalendar.formatDate(dateFormat));
                     break;
                 }
-                case "7":
+                case "7": {
+                    myCalendar.deleteEvent();
+                    break;
+                }
+                case "8": {
+                   // System.out.println(myCalendar.showListOfEvents());
+                    myCalendar.showListOfEvents();
+                    break;
+                }
+                case "9":
                     return;
                 default:
                     return;
